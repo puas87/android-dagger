@@ -28,10 +28,20 @@ import javax.inject.Inject
 
 class RegistrationActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var registrationViewModel: RegistrationViewModel
+    // @Inject annotated fields will be provided by Dagger
+    @Inject lateinit var registrationViewModel: RegistrationViewModel
 
+    /**
+     * Important: When using Activities, inject Dagger in the Activity's onCreate method before
+     * calling super.onCreate to avoid issues with fragment restoration. In super.onCreate, an
+     * Activity during the restore phase will attach fragments that might want to access
+     * activity bindings.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Ask Dagger to inject our dependencies
+        (application as MyApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 

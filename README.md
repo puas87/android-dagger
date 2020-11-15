@@ -1,3 +1,9 @@
+#TODO
+
+*Create a SplashActivity with a SplashViewModel that decides which screen to display..
+*As we've been doing, use dependency injection in SplashActivity to get fields injected by Dagger.
+*Remove the logic in the onCreate method of the MainActivity.kt since when the Activity is opened, the user will be logged in.
+
 # Using Dagger in your Android app
 
 This folder contains the source code for the "Using Dagger in your Android app" codelab.
